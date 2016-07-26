@@ -158,7 +158,7 @@ public class NetTCP {
 	}
 	
 	/// Switches the socket to server mode. Socket should have been previously bound using the `bind` function.
-	public func listen(backlog: Int32 = 128) {
+	public func listen(_ backlog: Int32 = 128) {
 	#if os(Linux)
 		let _ = SwiftGlibc.listen(fd.fd, backlog)
 	#else
@@ -485,7 +485,7 @@ public class NetTCP {
 	
 	/// Accept a series of new client connections and pass them to the callback. This function does not return outside of a catastrophic error.
 	/// - parameter callBack: The closure which will be called when the accept completes. the parameter will be a newly allocated instance of NetTCP which represents the client.
-	public func forEachAccept(callBack: (NetTCP?) -> ()) {
+	public func forEachAccept(_ callBack: (NetTCP?) -> ()) {
 		self.fd.switchToBlocking()
 		repeat {
 			let accRes = tryAccept()

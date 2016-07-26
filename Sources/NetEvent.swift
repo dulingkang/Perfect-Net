@@ -43,7 +43,7 @@ import PerfectThread
 #endif
 
 @noreturn
-func logTerminal(message: String) {
+func logTerminal(_ message: String) {
     print(message)
     exit(-1)
 }
@@ -141,7 +141,7 @@ public class NetEvent {
     #endif
 
 		guard self.kq != -1 else {
-			logTerminal(message: "Unable to initialize event listener.")
+			logTerminal("Unable to initialize event listener.")
 		}
 		self.evlist = UnsafeMutablePointer<event>(allocatingCapacity: self.numEvents)
 		memset(self.evlist, 0, sizeof(event.self) * self.numEvents)
@@ -163,7 +163,7 @@ public class NetEvent {
 				let nev = Int(kevent(self.kq, nil, 0, self.evlist, Int32(self.numEvents), nil))
 			#endif
 				guard nev >= 0 else {
-					logTerminal(message: "event returned less than zero \(nev).")
+					logTerminal("event returned less than zero \(nev).")
 				}
 
 				// process results

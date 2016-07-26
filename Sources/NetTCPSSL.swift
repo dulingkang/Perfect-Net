@@ -171,7 +171,7 @@ public class NetTCPSSL : NetTCP {
 		}
 	}
 
-	public func setTmpDH(path: String) -> Bool {
+	public func setTmpDH(_ path: String) -> Bool {
 		guard let ctx = self.sslCtx else {
 			return false
 		}
@@ -259,7 +259,7 @@ public class NetTCPSSL : NetTCP {
 		return ret
 	}
 
-	public func reasonErrorStr(errorCode: Int32) -> String {
+	public func reasonErrorStr(_ errorCode: Int32) -> String {
 	#if swift(>=3.0)
 		guard let buf = ERR_reason_error_string(UInt(errorCode)) else {
 			return ""
@@ -351,7 +351,7 @@ public class NetTCPSSL : NetTCP {
 		super.close()
 	}
 
-	public func beginSSL(closure: (Bool) -> ()) {
+	public func beginSSL(_ closure: (Bool) -> ()) {
 		self.beginSSL(timeoutSeconds: 5.0, closure: closure)
 	}
 
@@ -449,7 +449,7 @@ public class NetTCPSSL : NetTCP {
 		return r == 1
 	}
 
-	public func setVerifyLocations(caFilePath: String, caDirPath: String) -> Bool {
+	public func setVerifyLocations(_ caFilePath: String, caDirPath: String) -> Bool {
 		self.initSocket()
 		guard let sslCtx = self.sslCtx else {
 			return false
@@ -458,7 +458,7 @@ public class NetTCPSSL : NetTCP {
 		return r == 1
 	}
 
-	public func useCertificateFile(cert: String) -> Bool {
+	public func useCertificateFile(_ cert: String) -> Bool {
 		self.initSocket()
 		guard let sslCtx = self.sslCtx else {
 			return false
@@ -498,7 +498,7 @@ public class NetTCPSSL : NetTCP {
 		return NetTCPSSL(fd: fd)
 	}
 
-	override public func forEachAccept(callBack: (NetTCP?) -> ()) {
+	override public func forEachAccept(_ callBack: (NetTCP?) -> ()) {
 		super.forEachAccept {
 			[unowned self] (net:NetTCP?) -> () in
 

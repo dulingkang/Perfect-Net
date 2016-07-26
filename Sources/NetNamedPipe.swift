@@ -342,7 +342,7 @@ public class NetNamedPipe : NetTCP {
 	/// Receive an existing opened `NetTCP` descriptor from the sender
 	/// - parameter callBack: The callback to call when the receive completes. The parameter passed will be the received `NetTCP` object or nil.
 	/// - throws: `PerfectError.NetworkError`
-	public func receiveNetTCP(callBack: (NetTCP?) -> ()) throws {
+	public func receiveNetTCP(_ callBack: (NetTCP?) -> ()) throws {
 		try self.receiveFd {
 			(fd: Int32) -> () in
 
@@ -357,7 +357,7 @@ public class NetNamedPipe : NetTCP {
 	/// Receive an existing opened `NetNamedPipe` descriptor from the sender
 	/// - parameter callBack: The callback to call when the receive completes. The parameter passed will be the received `NetNamedPipe` object or nil.
 	/// - throws: `PerfectError.NetworkError`
-	public func receiveNetNamedPipe(callBack: (NetNamedPipe?) -> ()) throws {
+	public func receiveNetNamedPipe(_ callBack: (NetNamedPipe?) -> ()) throws {
 		try self.receiveFd {
 			(fd: Int32) -> () in
 
